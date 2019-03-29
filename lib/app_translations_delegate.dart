@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_multilang/app_translations.dart';
+import 'application.dart';
 
 class AppTranslationsDelegate extends LocalizationsDelegate<AppTranslations> {
   final Locale newLocale;
@@ -9,18 +10,17 @@ class AppTranslationsDelegate extends LocalizationsDelegate<AppTranslations> {
 
   @override
   bool isSupported(Locale locale) {
-    return application.supp;
+    return application.supportedLanguageCodes.contains(locale.languageCode);
   }
 
   @override
-  Future load(Locale locale) {
-    // TODO: implement load
-    return null;
+  Future<AppTranslations> load(Locale locale) {
+
+    return AppTranslations.load(newLocale ?? locale);
   }
 
   @override
   bool shouldReload(LocalizationsDelegate old) {
-    // TODO: implement shouldReload
-    return null;
+    return true;
   }
 }
