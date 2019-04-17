@@ -1,14 +1,14 @@
 {
   "@@last_modified": "2019-04-17T21:04:51.717895",
-  "title": "Hello world App",
+  "title": "Xin chao",
   "@title": {
-    "description": "The application title",
-    "type": "text",
+    "description": "Tua de app",
+    "type": "Chu cai",
     "placeholders": {}
   },
-  "hello": "Hello",
+  "hello": "Xin chao",
   "@hello": {
-    "type": "text",
+    "type": "chu xin chao",
     "placeholders": {}
   }
 }
