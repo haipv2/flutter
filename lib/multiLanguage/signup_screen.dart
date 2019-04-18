@@ -9,16 +9,16 @@ class SignUpUI extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpUI> {
-  static final List<String> languagesList = application.supportedLanguages;
-  static final List<String> languageCodesList =
-      application.supportedLanguageCodes;
+//  static final List<String> languagesList = application.supportedLanguages;
+//  static final List<String> languageCodesList =
+//      application.supportedLanguageCodes;
+//
+//  final Map<dynamic, dynamic> languagesMap = {
+//    languagesList[0]: languageCodesList[0],
+//    languagesList[1]: languageCodesList[1],
+//  };
 
-  final Map<dynamic, dynamic> languagesMap = {
-    languagesList[0]: languageCodesList[0],
-    languagesList[1]: languageCodesList[1],
-  };
-
-  String label = languagesList[0];
+  String label = Application.supportedLanguages[0];
 
   final formKey = new GlobalKey<FormState>();
   final scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -37,7 +37,7 @@ class _SignUpScreenState extends State<SignUpUI> {
   void initState() {
     super.initState();
     application.onLocaleChanged = onLocaleChange;
-    onLocaleChange(Locale(languagesMap["VietNam"]));
+    onLocaleChange(Locale(application.languagesMap["VietNam"]));
   }
 
   void onLocaleChange(Locale locale) async {
@@ -56,8 +56,8 @@ class _SignUpScreenState extends State<SignUpUI> {
   }
 
   void _select(String language) {
-    print("dd "+language);
-    onLocaleChange(Locale(languagesMap[language]));
+    print("dd " + language);
+    onLocaleChange(Locale(application.languagesMap[language]));
     setState(() {
       if (language == "VietNam") {
         label = "Viet Nam";
@@ -158,7 +158,7 @@ class _SignUpScreenState extends State<SignUpUI> {
               onSelected: _select,
               icon: new Icon(Icons.language, color: Colors.white),
               itemBuilder: (BuildContext context) {
-                return languagesList
+                return Application.supportedLanguages
                     .map<PopupMenuItem<String>>((String choice) {
                   return PopupMenuItem<String>(
                     value: choice,
