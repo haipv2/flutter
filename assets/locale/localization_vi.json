@@ -1,0 +1,13 @@
+{
+  "tab_home": "Màn hình chính",
+  "key_password": "Mật Khẩu",
+  "key_must_be_at_least_6_characters": "It nhất 6 kí tự",
+  "key_email": "Địa chỉ Email",
+  "key_please_enter_valid_email": "Nhập đúng email",
+  "key_last_name": "Tên",
+  "key_enter_last_name": "Nhập tên",
+  "key_first_name": "Họ",
+  "key_enter_first_name": "Nhập họ ",
+  "key_next": "Tiếp theo",
+  "type":"Loại"
+}

@@ -25,6 +25,7 @@ dependencies:
   intl_translation:
   transparent_image: ^1.0.0
   cached_network_image: ^0.7.0
+  easy_localization: ^1.0.3+1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -49,6 +50,10 @@ flutter:
     - images/smile.png
     - assets/logo.png
     - assets/alucard.jpg
+    - assets/locale/localization_en.json
+    - assets/locale/localization_vi.json
+    - assets/locale/ar.json
+    - assets/locale/en.json
   fonts:
       - family: Nunito
         fonts:
