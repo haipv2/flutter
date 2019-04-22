@@ -65,12 +65,6 @@ class _MyAppState extends State<MyApp> {
     return Container(
       child: Column(
         children: <Widget>[
-          Padding(
-              child: MaterialButton(
-            onPressed: null,
-            textColor: Colors.red,
-            child: Text(AppTranslations.of(context).text("key_next")),
-          ))
         ],
       ),
     );
