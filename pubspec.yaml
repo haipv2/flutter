@@ -56,6 +56,7 @@ flutter:
     - assets/locale/localization_vi.json
     - assets/locale/ar.json
     - assets/locale/en.json
+    - assets/images/p.png
   fonts:
       - family: Nunito
         fonts:

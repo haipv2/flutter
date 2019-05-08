@@ -15,12 +15,14 @@ class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 2));
+        AnimationController(vsync: this, duration: const Duration(seconds: 5));
     animation = Tween<double>(begin: 0, end: 300).animate(controller)
       ..addListener(() {
-        setState(() {});
+        setState(() {
+          print('SET START IS CALLED ${animation.value}');
+        });
       });
-    controller.forward();
+    controller.forward(from: 0);
   }
 
   @override
