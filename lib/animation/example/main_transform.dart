@@ -21,8 +21,8 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
           ..addListener(() {
             setState(() {});
           });
-    animation = Tween(begin: 1.0, end: 0.0).animate(CurvedAnimation(
-        parent: controller, curve: Interval(1.0, 0.0, curve: Curves.ease)));
+    animation = Tween(begin: 0.0, end: 2*pi).animate(CurvedAnimation(
+        parent: controller, curve: Interval(0.0, 1.0, curve: Curves.ease)));
   }
 
   @override
