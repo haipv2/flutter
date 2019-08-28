@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
 
 void main() {
   SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
@@ -51,10 +50,10 @@ class _HomePageState extends State<HomePage> {
         ),
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.black),
-        leading: IconButton(
-          icon: Icon(Icons.settings),
-          onPressed: () => _scaffoldKey.currentState.openDrawer(),
-        ),
+//        leading: IconButton(
+//          icon: Icon(Icons.menu),
+//          onPressed: () => _scaffoldKey.currentState.openDrawer(),
+//        ),
         actions: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -88,7 +87,51 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      drawer: Drawer(),
+      drawer: Drawer(
+        child: Container(
+          child: SizedBox(
+            width: size.width * 3 / 4,
+            child: Drawer(
+                elevation: 2,
+                child: Container(
+                  color: const Color(0xffF3E2A9),
+                  child: Column(
+                    children: <Widget>[
+                      UserAccountsDrawerHeader(
+                        accountName: Text('name'),
+                        accountEmail: Text('grade-B'),
+                        currentAccountPicture: CircleAvatar(
+                          child: Image.asset('images/cat.jpg'),
+                          backgroundColor: Colors.white,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                        ),
+                      ),
+                      ListTile(
+                        leading: const Icon(Icons.account_circle),
+                        title: Text('User\'s info'),
+                        onTap: () {
+                        },
+                      ),
+                      ListTile(
+                        leading: const Icon(Icons.settings),
+                        title: Text('Settings'),
+                        onTap: () {
+                        },
+                      ),
+                      ListTile(
+                        leading: const Icon(Icons.exit_to_app),
+                        title: Text('Logout'),
+                        onTap: () {
+                        },
+                      ),
+                    ],
+                  ),
+                )),
+          ),
+        ),
+      ),
       body: ContentPage(),
     );
   }
@@ -150,15 +193,17 @@ class _ContentPageState extends State<ContentPage> {
           child: loadBg(size),
         ),
         Container(
-          child: ListView.builder(itemBuilder: (context, index) {
-            return Container(
-              width: size.width * 0.6,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ItemInPage(index),
-              ),
-            );
-          }),
+          child: ListView.builder(
+              itemCount: 6,
+              itemBuilder: (context, index) {
+                return Container(
+//                  width: size.width * 0.6,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ItemInPage(index),
+                  ),
+                );
+              }),
         )
       ],
     );
@@ -203,7 +248,20 @@ class _ItemInPageState extends State<ItemInPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
+    if (widget.index == 5) {
+      return Container(
+        padding: EdgeInsets.only(bottom: 10),
+        child: Align(
+            alignment: Alignment.bottomLeft,
+            child: IconTheme(
+              data: IconThemeData(color: Colors.blue),
+              child: Icon(
+                Icons.account_circle,
+                size: 60,
+              ),
+            )),
+      );
+    }
     return Container(
       width: size.width * 0.7,
       child: Column(
@@ -281,17 +339,15 @@ class _ItemInPageState extends State<ItemInPage> {
             color: Colors.white,
             child: Padding(
               padding: EdgeInsets.fromLTRB(25, 10, 0, 0),
-              child: Text(
-                'Some Text goes here!!!!',
-                style: textStyle4,
-              ),
+              child: widget.index != 3
+                  ? Text('Some Text goes here!!!!', style: textStyle4)
+                  : Container(),
             ),
           ),
           Container(
-              width: size.width * 0.8,
-              child: widget.index == 2
-                  ? buildImageList(size)
-                  : Image.asset('images/dish.jpg')),
+              width: widget.index == 3 ? size.width * 0.7 : size.width * 0.8,
+              height: 260,
+              child: buildMiddleContetn(size, widget.index)),
           Container(
             height: 50,
             width: size.width * 0.7,
@@ -346,21 +402,25 @@ class _ItemInPageState extends State<ItemInPage> {
                   ),
                 ),
                 Expanded(
-                  child: Row(
+                  child: Stack(
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 5, 0),
-                        child: Icon(
-                          Icons.share,
-                          size: 15,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 3.0),
-                        child: Text(
-                          '${Random().nextInt(50)}',
-                          style: textStyle3,
-                        ),
+                      Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(20, 0, 5, 0),
+                            child: Icon(
+                              Icons.share,
+                              size: 15,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 3.0),
+                            child: Text(
+                              '${Random().nextInt(50)}',
+                              style: textStyle3,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -388,10 +448,9 @@ class _ItemInPageState extends State<ItemInPage> {
             children: <Widget>[
               Container(
                   width: size.width * 0.8 * 0.4,
-                  height: size.height*0.25,
+                  height: 130,
                   child: Image.asset(
                     'images/dish2.jpg',
-
                     fit: BoxFit.fitHeight,
                   )),
               Container(
@@ -400,7 +459,7 @@ class _ItemInPageState extends State<ItemInPage> {
                     children: <Widget>[
                       Image.asset(
                         'images/dish.jpg',
-                        height: size.height*0.22,
+                        height: 130,
                         fit: BoxFit.fitHeight,
                       ),
                       Positioned(
@@ -418,6 +477,29 @@ class _ItemInPageState extends State<ItemInPage> {
         ],
       ),
     );
+  }
+
+  Widget buildMiddleContetn(Size size, int index) {
+    if (widget.index == 1) {
+      return buildImageList(size);
+    }
+    if (widget.index == 3) {
+      return Container(
+        color: Colors.white,
+        padding: EdgeInsets.all(11),
+        child: Row(
+          children: <Widget>[
+            Flexible(
+              child: Text(
+                'Recently, the US Federal government banned online casinos from operating in America by making it illegal to transfer money to them through any US bank or payment system. As a result of this law, most of the popular online casino networks such as Party Gaming and PlayTech left the United States. Overnight, online casino players found themselves being chased by the Federal government. But, after a ',
+                textAlign: TextAlign.left,
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+    return Image.asset('images/dish.jpg');
   }
 }
 
