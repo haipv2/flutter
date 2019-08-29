@@ -99,12 +99,10 @@ class _HomePageState extends State<HomePage> {
                     CustomPaint(
                       painter: ArcPainter(),
                       child: Container(
-                        color: Colors.blue,
-                        height: 20,
                         width: size.width,
                       ),
                     ),
-                    AccountHeader(),
+//                    AccountHeader(),
 //                      UserAccountsDrawerHeader(
 //                        accountName: Text('PHAM VAN HAI'),
 //                        accountEmail: Text('grade-B'),
@@ -645,71 +643,25 @@ class DrawerContent extends StatelessWidget {
 class ArcPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    double radius = sqrt(pow(150,2) + pow(size.width/2,2));
-    Offset offset = Offset(size.width / 2, -150);
+//    double radius = sqrt(pow(150,2) + pow(size.width/2,2));
+    double radius = 150;
+    Offset offset = Offset(size.width / 2, 0);
 
-    Rect rect = Rect.fromLTWH(0, 0, size.width, size.height/2);
-//    Rect rect =  Rect.fromLTWH(0, -size.height, size.width, size.height * 2);
-    RRect rrect = RRect.fromRectAndRadius(rect, Radius.circular(10));
-    RRect rrect1 = RRect.fromRectAndCorners(rect,
-        topLeft: Radius.circular(0),
-        bottomLeft: Radius.circular(2),
-        bottomRight: Radius.circular(30),
-        topRight: Radius.circular(0));
-    RRect rrect2 = RRect.fromLTRBR(10,10, 10, 10, Radius.circular(30));
-
-//    canvas.drawRRect(
-//        rrect1,
-//        Paint()
-//          ..color = Colors.red
-//          ..strokeCap = StrokeCap.round
-//          ..style = PaintingStyle.fill);
-
-
-//    canvas.drawOval(rect,  Paint()
-//      ..color = Colors.blue
-//      ..strokeCap = StrokeCap.round
-//      ..style = PaintingStyle.fill);
-//
-//    canvas.drawCircle(
-//        offset,
-//        radius,
-//        Paint()
-//          ..color = Colors.red
-//          ..style = PaintingStyle.fill);
     Rect rectCircle = Rect.fromCircle(center: offset, radius: radius);
-    canvas.drawArc(
-        rectCircle,
-        0,
-        pi,
-        true,
-        Paint()
-          ..color = Colors.red
-          ..strokeCap = StrokeCap.round
-          ..style = PaintingStyle.fill);
-
-//    double radius = size.width / 2;
-//    Offset offset = Offset(size.width / 2, 0);
-//    Rect rectCircle = Rect.fromCircle(center: offset, radius: radius);
-//
-//    Rect rect = Rect.fromLTWH(0, -size.height, size.width, size.height * 2);
-//    RRect rrect = RRect.fromRectAndRadius(rect, Radius.circular(10));
-//    RRect rrect1 = RRect.fromRectAndCorners(rect,
-//        topLeft: Radius.circular(0),
-//        bottomLeft: Radius.circular(20),
-//        bottomRight: Radius.circular(30),
-//        topRight: Radius.circular(0));
-//    RRect rrect2 = RRect.fromLTRBR(10,10, 10, 10, Radius.circular(30));
-//
-//    canvas.save();
-//    canvas.clipRect(Rect.fromLTWH(0, 0, size.width, size.height));
-//    canvas.drawRRect(
-//        rrect1,
+    canvas.drawOval(rect, Paint()
+      ..color = Colors.red
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.fill);
+//    canvas.drawArc(
+//        rectCircle,
+//        0,
+//        pi,
+//        true,
 //        Paint()
 //          ..color = Colors.red
 //          ..strokeCap = StrokeCap.round
 //          ..style = PaintingStyle.fill);
-//    canvas.restore();
+
   }
 
   @override
