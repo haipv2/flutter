@@ -102,18 +102,7 @@ class _HomePageState extends State<HomePage> {
                         width: size.width,
                       ),
                     ),
-//                    AccountHeader(),
-//                      UserAccountsDrawerHeader(
-//                        accountName: Text('PHAM VAN HAI'),
-//                        accountEmail: Text('grade-B'),
-//                        currentAccountPicture: CircleAvatar(
-//                          child: Image.asset('images/ava.jpg'),
-//                          backgroundColor: Colors.white,
-//                        ),
-//                        decoration: BoxDecoration(
-//                          color: Colors.blue,
-//                        ),
-//                      ),
+                    AccountHeader(),
                     Container(
                       height: 40,
                     ),
@@ -643,25 +632,16 @@ class DrawerContent extends StatelessWidget {
 class ArcPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-//    double radius = sqrt(pow(150,2) + pow(size.width/2,2));
     double radius = 150;
     Offset offset = Offset(size.width / 2, 0);
 
-    Rect rectCircle = Rect.fromCircle(center: offset, radius: radius);
-    canvas.drawOval(rect, Paint()
-      ..color = Colors.red
-      ..strokeCap = StrokeCap.round
-      ..style = PaintingStyle.fill);
-//    canvas.drawArc(
-//        rectCircle,
-//        0,
-//        pi,
-//        true,
-//        Paint()
-//          ..color = Colors.red
-//          ..strokeCap = StrokeCap.round
-//          ..style = PaintingStyle.fill);
-
+    Rect ovalRect = Rect.fromLTWH(0, 140, size.width, 20);
+    canvas.drawOval(
+        ovalRect,
+        Paint()
+          ..color = Colors.blue
+          ..strokeCap = StrokeCap.butt
+          ..style = PaintingStyle.fill);
   }
 
   @override
