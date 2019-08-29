@@ -87,49 +87,117 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      drawer: Drawer(
-        child: Container(
-          child: SizedBox(
-            width: size.width * 3 / 4,
-            child: Drawer(
-                elevation: 2,
-                child: Container(
-                  color: const Color(0xffF3E2A9),
-                  child: Column(
-                    children: <Widget>[
-                      UserAccountsDrawerHeader(
-                        accountName: Text('name'),
-                        accountEmail: Text('grade-B'),
-                        currentAccountPicture: CircleAvatar(
-                          child: Image.asset('images/cat.jpg'),
-                          backgroundColor: Colors.white,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                        ),
+      drawer: Container(
+        child: SizedBox(
+//          width: size.width * 3 / 4,
+          child: Drawer(
+              elevation: 2,
+              child: Container(
+                color: Colors.white,
+                child: Column(
+                  children: <Widget>[
+                    CustomPaint(
+                      painter: ArcPainter(),
+                      child: Container(
+                        color: Colors.blue,
+                        height: 20,
+                        width: size.width,
                       ),
-                      ListTile(
-                        leading: const Icon(Icons.account_circle),
-                        title: Text('User\'s info'),
-                        onTap: () {
-                        },
+                    ),
+                    AccountHeader(),
+//                      UserAccountsDrawerHeader(
+//                        accountName: Text('PHAM VAN HAI'),
+//                        accountEmail: Text('grade-B'),
+//                        currentAccountPicture: CircleAvatar(
+//                          child: Image.asset('images/ava.jpg'),
+//                          backgroundColor: Colors.white,
+//                        ),
+//                        decoration: BoxDecoration(
+//                          color: Colors.blue,
+//                        ),
+//                      ),
+                    Container(
+                      height: 40,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20.0, 5, 0, 5),
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            width: 25,
+                            height: 20,
+                            decoration: BoxDecoration(
+                                color: Colors.blue,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5.0))),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 15.0),
+                            child: Text('EXPLORE'),
+                          ),
+                        ],
                       ),
-                      ListTile(
-                        leading: const Icon(Icons.settings),
-                        title: Text('Settings'),
-                        onTap: () {
-                        },
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20.0, 5, 0, 5),
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            width: 25,
+                            height: 20,
+                            decoration: BoxDecoration(
+                                color: Colors.blue,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5.0))),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15.0),
+                            child: Text('HOME WORK'),
+                          ),
+                        ],
                       ),
-                      ListTile(
-                        leading: const Icon(Icons.exit_to_app),
-                        title: Text('Logout'),
-                        onTap: () {
-                        },
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20.0, 5, 0, 5),
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            width: 25,
+                            height: 20,
+                            decoration: BoxDecoration(
+                                color: Colors.blue,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5.0))),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 15.0),
+                            child: Text('AUDIO LIBRARY'),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                )),
-          ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20.0, 5, 0, 5),
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            width: 25,
+                            height: 20,
+                            decoration: BoxDecoration(
+                                color: Colors.blue,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5.0))),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 15.0),
+                            child: Text('E-LEARNING'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              )),
         ),
       ),
       body: ContentPage(),
@@ -500,6 +568,153 @@ class _ItemInPageState extends State<ItemInPage> {
       );
     }
     return Image.asset('images/dish.jpg');
+  }
+}
+
+class AccountHeader extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 150,
+      color: Colors.blue,
+      child: DrawerContent(),
+    );
+  }
+}
+
+class DrawerContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      child: Stack(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.fromLTRB(15, 15, 0, 0),
+            child: IconTheme(
+                data: IconThemeData(color: Colors.white),
+                child: Icon(
+                  Icons.settings,
+                  size: 25,
+                )),
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 30),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  width: 70,
+                  height: 70,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        image: AssetImage('images/ava.jpg'), fit: BoxFit.cover),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'HAIPV DEV',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    IconTheme(
+                      data: IconThemeData(
+                        color: Colors.white,
+                      ),
+                      child: Icon(Icons.arrow_drop_down),
+                    )
+                  ],
+                ),
+                Container(
+                  child: Text(
+                    'First grade-b',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ArcPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    double radius = sqrt(pow(150,2) + pow(size.width/2,2));
+    Offset offset = Offset(size.width / 2, -150);
+
+    Rect rect = Rect.fromLTWH(0, 0, size.width, size.height/2);
+//    Rect rect =  Rect.fromLTWH(0, -size.height, size.width, size.height * 2);
+    RRect rrect = RRect.fromRectAndRadius(rect, Radius.circular(10));
+    RRect rrect1 = RRect.fromRectAndCorners(rect,
+        topLeft: Radius.circular(0),
+        bottomLeft: Radius.circular(2),
+        bottomRight: Radius.circular(30),
+        topRight: Radius.circular(0));
+    RRect rrect2 = RRect.fromLTRBR(10,10, 10, 10, Radius.circular(30));
+
+//    canvas.drawRRect(
+//        rrect1,
+//        Paint()
+//          ..color = Colors.red
+//          ..strokeCap = StrokeCap.round
+//          ..style = PaintingStyle.fill);
+
+
+//    canvas.drawOval(rect,  Paint()
+//      ..color = Colors.blue
+//      ..strokeCap = StrokeCap.round
+//      ..style = PaintingStyle.fill);
+//
+//    canvas.drawCircle(
+//        offset,
+//        radius,
+//        Paint()
+//          ..color = Colors.red
+//          ..style = PaintingStyle.fill);
+    Rect rectCircle = Rect.fromCircle(center: offset, radius: radius);
+    canvas.drawArc(
+        rectCircle,
+        0,
+        pi,
+        true,
+        Paint()
+          ..color = Colors.red
+          ..strokeCap = StrokeCap.round
+          ..style = PaintingStyle.fill);
+
+//    double radius = size.width / 2;
+//    Offset offset = Offset(size.width / 2, 0);
+//    Rect rectCircle = Rect.fromCircle(center: offset, radius: radius);
+//
+//    Rect rect = Rect.fromLTWH(0, -size.height, size.width, size.height * 2);
+//    RRect rrect = RRect.fromRectAndRadius(rect, Radius.circular(10));
+//    RRect rrect1 = RRect.fromRectAndCorners(rect,
+//        topLeft: Radius.circular(0),
+//        bottomLeft: Radius.circular(20),
+//        bottomRight: Radius.circular(30),
+//        topRight: Radius.circular(0));
+//    RRect rrect2 = RRect.fromLTRBR(10,10, 10, 10, Radius.circular(30));
+//
+//    canvas.save();
+//    canvas.clipRect(Rect.fromLTWH(0, 0, size.width, size.height));
+//    canvas.drawRRect(
+//        rrect1,
+//        Paint()
+//          ..color = Colors.red
+//          ..strokeCap = StrokeCap.round
+//          ..style = PaintingStyle.fill);
+//    canvas.restore();
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return false;
   }
 }
 
