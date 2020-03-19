@@ -648,7 +648,7 @@ class ArcPainter extends CustomPainter {
     Offset offset = Offset(size.width / 2, 0);
 
     Rect rectCircle = Rect.fromCircle(center: offset, radius: radius);
-    canvas.drawOval(rect, Paint()
+    canvas.drawOval(rectCircle, Paint()
       ..color = Colors.red
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.fill);
